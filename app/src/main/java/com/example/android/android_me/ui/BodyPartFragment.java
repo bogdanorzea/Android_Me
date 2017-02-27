@@ -12,15 +12,37 @@ import com.example.android.android_me.data.AndroidImageAssets;
 
 public class BodyPartFragment extends Fragment {
 
+    // TODO (1) Create a setter method and class variable to set and store of a list of image resources
+
+    // TODO (2) Create another setter method and variable to track and set the index of the list item to display
+        // ex. index = 0 is the first image id in the given list , index 1 is the second, and so on
+
+    /**
+     * Mandatory empty constructor for the fragment manager to instantiate the fragment
+     */
     public BodyPartFragment() {
     }
 
+    /**
+     * Inflates the fragment layout file and sets the correct resource for the image to display
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_body_part, container, false);
-        ImageView bodyPartImageView = (ImageView) view.findViewById(R.id.body_part_image);
-        bodyPartImageView.setImageResource(AndroidImageAssets.getHeads().get(0));
 
-        return view;
+        // Inflate the Android-Me fragment layout
+        View rootView = inflater.inflate(R.layout.fragment_body_part, container, false);
+
+        // Get a reference to the ImageView in the fragment layout
+        ImageView imageView = (ImageView) rootView.findViewById(R.id.body_part_image_view);
+
+        // Set the image to the first in our list of head images
+        imageView.setImageResource(AndroidImageAssets.getHeads().get(0));
+
+        // TODO (3) If a list of image ids exists, set the image resource to the correct item in that list
+        // Otherwise, create a Log statement that indicates that the list was not found
+
+        // Return the rootView
+        return rootView;
     }
+
 }
