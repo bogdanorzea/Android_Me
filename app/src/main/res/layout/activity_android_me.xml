@@ -43,7 +43,7 @@
 
         <!-- Container to hold the legs BodyPartFragment of the custom Android -->
         <FrameLayout
-            android:id="@+id/legs_container"
+            android:id="@+id/leg_container"
             android:layout_width="match_parent"
             android:layout_height="180dp"/>
 

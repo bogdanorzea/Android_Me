@@ -16,8 +16,11 @@
 
 package com.example.android.android_me.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.android.android_me.R;
@@ -25,6 +28,9 @@ import com.example.android.android_me.R;
 // This activity is responsible for displaying the master list of all images
 public class MainActivity extends AppCompatActivity implements MasterListFragment.OnImageClickListener {
 
+    int headIndex;
+    int bodyIndex;
+    int legIndex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +43,38 @@ public class MainActivity extends AppCompatActivity implements MasterListFragmen
     public void onImageSelected(int position) {
         Toast.makeText(this, "Position clicked = " + position, Toast.LENGTH_SHORT).show();
 
-        // TODO (2) Based on where a user has clicked, store the selected list index for the head, body, and leg BodyPartFragments
+        int bodyPartPosition = position / 12;
+        int listPostion = position - 12 * bodyPartPosition;
+        switch (bodyPartPosition) {
+            case 0:
+                headIndex = listPostion;
+                break;
+            case 1:
+                bodyIndex = listPostion;
+                break;
+            case 2:
+                legIndex = listPostion;
+                break;
+            default:
+                break;
+        }
 
-        // TODO (3) Put this information in a Bundle and attach it to an Intent that will launch an AndroidMeActivity
+        Bundle b = new Bundle();
+        b.putInt("headIndex", headIndex);
+        b.putInt("bodyIndex", bodyIndex);
+        b.putInt("legsIndex", legIndex);
 
-        // TODO (4) Get a reference to the "Next" button and launch the intent when this button is clicked
+        Button next = (Button) findViewById(R.id.next_button);
+
+        final Intent intent = new Intent(this, AndroidMeActivity.class);
+        intent.putExtras(b);
+
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(intent);
+            }
+        });
 
     }
 }
