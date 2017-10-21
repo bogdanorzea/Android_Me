@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <fragment
+        android:id="@+id/master_list_fragment"
+        class="com.example.android.android_me.ui.MasterListFragment"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:id="@+id/android_me_linear_layout"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+        <!-- Container to hold the head BodyPartFragment of the custom Android -->
+        <FrameLayout
+            android:id="@+id/head_container"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"/>
+
+        <!-- Container to hold the body BodyPartFragment of the custom Android -->
+        <FrameLayout
+            android:id="@+id/body_container"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"/>
+
+        <!-- Container to hold the legs BodyPartFragment of the custom Android -->
+        <FrameLayout
+            android:id="@+id/leg_container"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>
